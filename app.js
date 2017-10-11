@@ -18,6 +18,8 @@ app.locals.globalWow = "Express is, like, MAGIC"; //If we end up needing some va
 let routes = require('./routes/');
 
 // Begin middleware stack
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(routes);
 
 // Add a 404 error handler

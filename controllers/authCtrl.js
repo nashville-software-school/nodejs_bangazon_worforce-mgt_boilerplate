@@ -16,6 +16,9 @@ module.exports.register = (req, res, next) => {
     req.logIn(user, err => {
       if (err) { return next(err) }
       console.log("authenticated. Rerouting to home!" );
+      // Save a msg in a cookie whose value will be added to req
+      // using https://www.npmjs.com/package/express-flash-2 docs, but installed express-flash
+      req.flash('registerMsg', 'Thanks for signing up!');
       res.redirect('/')
     })
   })(req, res, next)

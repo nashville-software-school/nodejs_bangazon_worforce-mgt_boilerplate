@@ -3,7 +3,11 @@ html
   head
     title Bangazon Workforce Managament
   body
-    h1 Bangazon Workforce Managament
+    h1 Bangazon Workforce Management
+    h2 #{globalWow}
+    .welcome-text
+      if messages.registerMsg
+        h1= messages.registerMsg
 
   block content
     button#showLogin login

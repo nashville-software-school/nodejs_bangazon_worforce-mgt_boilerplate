@@ -7,7 +7,8 @@ const bCrypt = require('bcrypt-nodejs');
 const passport = require('passport');
 
 // initialize the passport-local strategy
-const { Strategy } = require('passport-local')
+const { Strategy } = require('passport-local');
+let User = null;
 
 // Then define our custom strategy with our instance of the LocalStrategy. Takes two args
 const ourLocalStrategy = new Strategy(
@@ -21,9 +22,7 @@ const ourLocalStrategy = new Strategy(
   // arg2 callback, handle storing a user's details.
   (req, email, password, done) => {
     console.log('local strat callback');
-    const { User } = req.app.get('models');
-    console.log('User', User);
-
+    User = req.app.get('models').User;
 
     // add our hashed password generating function inside the callback function
     const generateHash = (password) => {
@@ -59,9 +58,25 @@ const ourLocalStrategy = new Strategy(
         }
     });
   }
-)
+);
+
+//serialize
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+// deserialize user
+passport.deserializeUser(function(id, done) {
+  User.findById(id).then(function(user) {
+    if (user) {
+        done(null, user.get());
+    } else {
+        done(user.errors, null);
+    }
+  });
+});
 
 // Take the new strategy we just created and use it as middleware, so the http requests get piped through it.
 // The POST to register will trigger this, because we will call passport.authenticate in the auth ctrl.
 // The first argument is optional and it sets the name of the strategy.
-passport.use('local-signup', ourLocalStrategy)
+passport.use('local-signup', ourLocalStrategy);

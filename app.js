@@ -5,9 +5,10 @@ const app = express();
 const passport = require('passport')
 var session = require('express-session')
 let bodyParser = require('body-parser');
+const flash = require('express-flash');
 
 require('dotenv').config();
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8080;
 
 // using require('./models') to get the models may create more than one connection to the database. To avoid that, the models variable must be somehow singleton-esque. This can be achieved by attaching the models module to the application:
 app.set('models', require('./models')); //pulls in models/index.js by default. Index exports all the models you define in the models folder. So cool.
@@ -35,12 +36,10 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(flash());
 
 // note that this needs to be after the above stuff
 app.use(routes);
-
-
-
 
 // Add a 404 error handler
 // Add error handler to pipe all server errors to from the routing middleware

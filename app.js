@@ -2,6 +2,8 @@
 
 const express = require('express');
 const app = express();
+const passport = require('passport')
+var session = require('express-session')
 let bodyParser = require('body-parser');
 
 require('dotenv').config();
@@ -18,13 +20,31 @@ app.locals.globalWow = "Express is, like, MAGIC"; //If we end up needing some va
 let routes = require('./routes/');
 
 // Begin middleware stack
+
+
+// Inject session persistence into middleware stack
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+})); // session secret
+
+//execute passport strategies file
+require('./config/passport-strat.js');
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// note that this needs to be after the above stuff
 app.use(routes);
+
+
+
 
 // Add a 404 error handler
 // Add error handler to pipe all server errors to from the routing middleware
 
 app.listen(port, () => {
-  console.log(`listening on port ${port}` );
+  console.log(`listening on port ${port}`);
 });

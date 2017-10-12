@@ -18,7 +18,7 @@ router.post('/login', (req, res, next) => {
 
 // pipe all other requests through the route modules
 router.use(require('./computerRoute'));
+router.use(require('./authRoute'));
 // router.use(require('./foo'));
-
 
 module.exports = router;

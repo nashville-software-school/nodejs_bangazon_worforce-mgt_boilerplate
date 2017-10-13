@@ -1,1 +1,8 @@
-h1 Welcome back, #{user}
+extends index.pug
+
+block content
+  .welcome-text
+    if messages.registerMsg
+      h1= messages.registerMsg
+    else
+      h1= messages.welcomeBackMsg

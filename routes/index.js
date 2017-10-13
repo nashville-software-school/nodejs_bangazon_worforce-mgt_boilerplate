@@ -16,6 +16,12 @@ router.post('/login', (req, res, next) => {
   res.render('welcome', {user: req.body.username});
 });
 
+router.get('/welcome', (req, res, next) => {
+  console.log('trying to follow welcome route');
+
+  res.render('welcome');
+});
+
 // pipe all other requests through the route modules
 router.use(require('./computerRoute'));
 router.use(require('./authRoute'));

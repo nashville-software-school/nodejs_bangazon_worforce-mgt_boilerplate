@@ -21,8 +21,6 @@ app.locals.globalWow = "Express is, like, MAGIC"; //If we end up needing some va
 let routes = require('./routes/');
 
 // Begin middleware stack
-
-
 // Inject session persistence into middleware stack
 app.use(session({
   secret: 'keyboard cat',
@@ -34,6 +32,13 @@ app.use(session({
 require('./config/passport-strat.js');
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+// This custom middleware adds the logged-in user's info to the locals variable,
+// so we can access it in the Pug templates
+app.use( (req, res, next) => {
+  res.locals.session = req.session;
+  // console.log('res.locals.session', res.locals.session);
+  next();
+});
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(flash());

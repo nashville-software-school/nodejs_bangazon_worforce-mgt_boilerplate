@@ -3,10 +3,17 @@
 const { Router } = require('express');
 const router = Router();
 // const
-const {display, register} = require('../controllers/authCtrl.js');
+const {displayRegister, register, displayLogin, login, welcome} = require('../controllers/authCtrl.js');
 
-router.get('/register', display);
-router.post('/register', register)
+// new users
+router.get('/register', displayRegister);
+router.post('/register', register);
 
-module.exports = router
+// login existing users
+router.get('/login', displayLogin);
+router.post('/login', login);
+
+router.get('/welcome', welcome);
+
+module.exports = router;
 

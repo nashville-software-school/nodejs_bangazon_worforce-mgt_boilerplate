@@ -9,6 +9,10 @@ module.exports = function(sequelize, DataTypes) {
   }, {timestamps: false});
 
   User.associate= (models) => {
+    // With sync looks like we don't need to have matching association in computer model?
+    User.belongsToMany(models.Computer, {
+      through: 'users_computers', timestamps: false
+    });
   };
 
   return User;

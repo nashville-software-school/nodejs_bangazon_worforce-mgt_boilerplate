@@ -5,7 +5,12 @@ module.exports = function(sequelize, DataTypes) {
     manufacturer: DataTypes.STRING,
     make: DataTypes.STRING,
     purchase_date: DataTypes.DATEONLY
-  }, {timestamps: false});
+  },
+  {
+    timestamps: false,
+    tableName: 'computers',
+    paranoid: true //keeps computers from being deleted. Adds a 'deletedAt' property
+  });
 
   Computer.associate = (models) => {
     // associate with users in a join table. Each row will contain a computer id, employee id, date assigned, and date returned

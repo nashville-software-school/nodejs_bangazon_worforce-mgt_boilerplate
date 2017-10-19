@@ -1,0 +1,16 @@
+{
+  "usersComputers": [
+    {
+      "UserId": 1,
+      "ComputerId": 3
+    },
+    {
+      "UserId": 2,
+      "ComputerId": 2
+    },
+    {
+      "UserId": 3,
+      "ComputerId": 1
+    }
+  ]
+}

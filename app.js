@@ -2,8 +2,8 @@
 
 const express = require('express');
 const app = express();
-const passport = require('passport')
-var session = require('express-session')
+const passport = require('passport');
+var session = require('express-session');
 let bodyParser = require('body-parser');
 const flash = require('express-flash');
 
@@ -14,6 +14,14 @@ const port = process.env.PORT || 8080;
 app.set('models', require('./models')); //pulls in models/index.js by default. Index exports all the models you define in the models folder. So cool.
 // And when you need to require a class of the model in a controller, use this insise a middleware function rather than a direct import:
 // const { Computer } = req.app.get('models');
+
+// This will run sync every time you restart the server. If using nodemon, be aware that every
+// change will restart the server
+// force: true will drop existing tables then create them again
+app.get('models').sequelize.sync({force: true})
+.then( () => {
+  // bulkInsert foo
+});
 
 app.set('view engine', 'pug');
 app.locals.globalWow = "Express is, like, MAGIC"; //If we end up needing some value to be available to every pug template, look into using something like this that can be accessed in the templates just like any variable we pass directly to the template.
@@ -52,3 +60,5 @@ app.use(routes);
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
+
+module.exports = app;

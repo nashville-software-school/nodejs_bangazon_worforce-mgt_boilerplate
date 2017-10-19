@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "first_name": "Dinky",
+      "last_name": "Smith",
+      "username": "dinky",
+      "email": "dinky@d.com",
+      "password": "$2a$08$wsTxfAgfdhiM2zHl1ZlTnuMfSjxfM1KsvvxQGqS8DhGThA.xPO1Je"
+    },
+    {
+      "first_name": "Fred",
+      "last_name": "Smith",
+      "username": "fred",
+      "email": "fred@fred.com",
+      "password": "$2a$08$wsTxfAgfdhiM2zHl1ZlTnuMfSjxfM1KsvvxQGqS8DhGThA.xPO1Je"
+    },
+    {
+      "first_name": "Darla",
+      "last_name": "Jones",
+      "username": "darla_j",
+      "email": "darla@darla.com",
+      "password": "$2a$08$wsTxfAgfdhiM2zHl1ZlTnuMfSjxfM1KsvvxQGqS8DhGThA.xPO1Je"
+    },
+    {
+      "first_name": "Carla",
+      "last_name": "Cowbell",
+      "username": "carla_dingdong",
+      "email": "carla@carla.com",
+      "password": "$2a$08$wsTxfAgfdhiM2zHl1ZlTnuMfSjxfM1KsvvxQGqS8DhGThA.xPO1Je"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "computers": [
+    {
+      "manufacturer": "Apple",
+      "make": "MacBook Pro",
+      "purchase_date": "2017-05-04"
+    },
+    {
+      "manufacturer": "Apple",
+      "make": "iMac",
+      "purchase_date": "2012-05-03"
+    },
+    {
+      "manufacturer": "PeeCees R Us",
+      "make": "Plastic Wonder",
+      "purchase_date": "2014-05-04"
+    }
+  ]
+}

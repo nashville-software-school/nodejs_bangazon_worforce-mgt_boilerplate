@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "db:reset": "sequelize db:seed:all",
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

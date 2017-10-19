@@ -87,9 +87,16 @@ const LoginStrategy = new Strategy(
 
     User.findOne({where: {email}})
     .then( (user) => {
+      console.log('username stuff', user);
+
       if (!user) {
         return done(null, false, {
-          message: 'Email does not exist'
+          message: 'Can\'t find a user with those credentials. Please try again'
+        });
+      }
+      if (req.body.username != user.username ) {
+        return done(null, false, {
+          message: 'Wrong username. Please try again'
         });
       }
       if (!isValidPassword(user.password, password)) {
@@ -103,7 +110,7 @@ const LoginStrategy = new Strategy(
     .catch( (err) => {
       console.log("Error:", err);
       return done(null, false, {
-        message: 'Something went wrong with your Signin'
+        message: 'Something went wrong with your sign in'
       });
     });
   }

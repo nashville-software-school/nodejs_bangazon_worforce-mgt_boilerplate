@@ -5,5 +5,7 @@ block content
     if messages.registerMsg
       h1= messages.registerMsg
     else
-      h1= messages.welcomeBackMsg
-    h2= session.passport.user.email
+      //- careful about flash messages. They go away when page refreshes...
+      h1 #{messages.welcomeBackMsg} #{session.passport.user.first_name}
+      //- This would be more permanent
+      //- h1 Welcome back, #{session.passport.user.first_name}

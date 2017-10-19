@@ -2,6 +2,8 @@ extends index.pug
 
 block content
   h1 This is a form
+  if message
+    h2= message
 
   form(action="/login", method="post")
     input(type="text" placeholder="username" name="username")

@@ -28,7 +28,7 @@ const RegistrationStrategy = new Strategy(
 
     // add our hashed password generating function inside the callback function
     const generateHash = (password) => {
-      return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null); //what is 3rd arg?
+      return bCrypt.hashSync(password, bCrypt.genSaltSync(8)); //what is 3rd arg?
     };
 
     // using the Sequelize user model we initialized earlier as User, we check to see if the user already exists, and if not we add them.

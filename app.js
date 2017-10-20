@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const passport = require('passport')
-var session = require('express-session')
+var session = require('express-session');
 let bodyParser = require('body-parser');
 const flash = require('express-flash');
 

@@ -2,6 +2,6 @@ extends index.pug
 
 block content
   h1 Register as a spankin' new user
-  if msg
-    h2= msg
+  if msgObj
+    h2= msgObj.message
   include partials/user-form.pug

@@ -43,7 +43,6 @@ module.exports.login = (req, res, next) => {
 
     if (err) {  console.log(err) } //or return next(err) once handler set up in app.js
     if (!user) {
-      req.flash('welcomeBackMsg',`Welcome back, `);
       return res.render('login', msgObj)
     }
 
